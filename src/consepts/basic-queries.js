@@ -1,7 +1,7 @@
 const db = require('./../db/db.js');
 
 async function createuserTable() {
-  const createUserTables = sql`
+  const createUserTables = `
 CREATE TABLE IF NOT EXISTS users(
   id SERIAL PRIMERY KEY,
   username VARCHAR(50) UNIQUE NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS users(
 }
 
 async function insertUser(username, email) {
-  const insertUserQuery = sql`
+  const insertUserQuery = `
     INSERT INTO users (username, email)
     VALUES ($1, $2)
     RETURNING *
@@ -33,7 +33,7 @@ async function insertUser(username, email) {
 }
 
 async function fetchAllUsers() {
-  const getallusers = sql`
+  const getallusers = `
   SELECT * FROM users
   `;
   try {
@@ -48,7 +48,7 @@ async function fetchAllUsers() {
 }
 
 async function updateuser(username, newemail) {
-  const updateuserQuery = sql`
+  const updateuserQuery = `
     UPDATE  users
     set email = $2
     where username  = $1
