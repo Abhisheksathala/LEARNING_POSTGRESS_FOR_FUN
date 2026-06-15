@@ -1,0 +1,13 @@
+psql -U postgres -d postgres -f PART_1/01.sql               
+
+
+psql (17.5)
+Type "help" for help.
+
+postgres=# SELECT current_user;
+ current_user                                             
+--------------
+ postgres
+(1 row)
+
+

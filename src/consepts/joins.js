@@ -1,4 +1,4 @@
-const db = require('./../db/db.js');
+const db = require("./../db/db.js");
 
 async function getusersWithPosts() {
   const getuserwithpostsQuery = `
@@ -9,32 +9,29 @@ async function getusersWithPosts() {
   try {
     const res = await db.query(getuserwithpostsQuery);
     if (res && res.rows && res.rows.length > 0) {
-      console.log('All users:');
+      console.log("All users:");
       return res.rows[0];
     } else {
-      console.log('No users found');
+      console.log("No users found");
     }
   } catch (error) {
     console.log(error);
   }
 }
 
-
-async function getalluserandtherposts()
-{
+async function getalluserandtherposts() {
   const getallusersandtherpostss = `
   SELECT users.id, users.username,posts.title
   FROM users
   LEFT JOIN posts ON users.id = posts.user_id
-  `
+  `;
 
   try {
-
-const res = await db.query(getallusersandtherpostss)
-return res.rows
+    const res = await db.query(getallusersandtherpostss);
+    return res.rows;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
-module.exports = { getusersWithPosts,getalluserandtherposts };
+module.exports = { getusersWithPosts, getalluserandtherposts };

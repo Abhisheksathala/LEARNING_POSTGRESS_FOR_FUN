@@ -22,7 +22,6 @@ async function insertUser(username, email) {
     VALUES ($1, $2)
     RETURNING *
   `;
-
   try {
     const res = await db.query(insertUserQuery, [username, email]);
     console.log(res.rows[0]);
@@ -38,7 +37,6 @@ async function fetchAllUsers() {
   `;
   try {
     const res = await db.query(getallusers);
-
     console.log('all user has been successfully', res);
     console.log(res.rows);
   } catch (error) {

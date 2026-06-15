@@ -42,7 +42,7 @@ async function pagenationatedUsers(limit, offset) {
   try {
     const res = await  db.query(getpaginationQuery, [limit, offset]);
     console.log("Query result:", res.rows);
-    if (res && res.rows && res.rows > 0) {
+    if (res && res.rows && res.rows.length > 0) {
       return res.rows[0];
     }else {
       return [];
